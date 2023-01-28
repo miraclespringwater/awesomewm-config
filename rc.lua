@@ -3,7 +3,7 @@ require("tags")
 require("tasklist")
 require("layouts")
 require("autostart")
-require("beautiful_themes")
+require("beautiful_config")
 require("menu")
 require("screen")
 require("bindings") -- "bindings.lua" requires "actions.lua" locally
