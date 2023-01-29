@@ -1,4 +1,3 @@
---{{{ Actions
 return {
   global = {
     awesome = { 
@@ -58,8 +57,8 @@ return {
     },
 
     layout = { -- assigned
-      increase_master_width_factor = function() awful.tag.incmwfact(0.05) end,
-      decrease_master_width_factor = function() awful.tag.incmwfact(-0.05) end,
+      increase_master_width_factor = function() awful.tag.incmwfact(0.025) end,
+      decrease_master_width_factor = function() awful.tag.incmwfact(-0.025) end,
       increase_master_count        = function() awful.tag.incnmaster(1,nil,true) end,
       decrease_master_count        = function() awful.tag.incnmaster(-1,nil,true) end,
       increase_column_count        = function() awful.tag.incncol(1,nil,true) end,
@@ -126,7 +125,6 @@ return {
                                            c:raise()
                                        end,
       close                        = function(c) c:kill() end,
-      -- toggle_floating              = awful.client.floating.toggle,
       toggle_floating              = function(c) awful.client.floating.toggle(); c.ontop = not c.ontop  end,
       move_to_master               = function(c) c:swap(awful.client.getmaster()) end,
       move_to_screen               = function(c) c:move_to_screen() end,
@@ -138,4 +136,3 @@ return {
     }
   }
 }
---}}}

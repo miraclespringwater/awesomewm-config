@@ -1,4 +1,3 @@
--- {{{ Autostart windowless processes
 -- This function will run once every time Awesome is started
 local function run_once(cmd_arr)
     for _, cmd in ipairs(cmd_arr) do
@@ -13,4 +12,3 @@ awful.spawn.with_shell(
     -- list each of your autostart commands, followed by ; inside single quotes, followed by ..
     'dex --environment Awesome --autostart --search-paths "$HOME/.config/autostart"' -- https://github.com/jceb/dex
 )
--- }}}

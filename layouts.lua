@@ -1,4 +1,3 @@
---{{{ Layouts
 awful.layout.layouts = {
     awful.layout.suit.tile,
     awful.layout.suit.floating,
@@ -32,4 +31,3 @@ awful.layout.layouts = {
 --lain.layout.cascade.tile.extra_padding = 5
 --lain.layout.cascade.tile.nmaster       = 5
 --lain.layout.cascade.tile.ncol          = 2
---}}}

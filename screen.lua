@@ -1,4 +1,3 @@
---{{{ Screen
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", function(s)
     -- Wallpaper
@@ -24,4 +23,3 @@ screen.connect_signal("arrange", function (s)
 end)
 -- Create a wibox for each screen and add it
 awful.screen.connect_for_each_screen(function(s) beautiful.at_screen_connect(s) end)
---}}}

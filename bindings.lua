@@ -182,3 +182,6 @@ clientbuttons = mytable.join(
     end)
 )
 --}}}
+--Set global button and keys
+root.buttons(globalbuttons)
+root.keys(globalkeys)

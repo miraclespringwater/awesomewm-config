@@ -1,8 +1,3 @@
-local gears         = require("gears")
-local awful         = require("awful")
-                      require("awful.autofocus")
-local mytable       = awful.util.table or gears.table -- 4.{0,1} compatibility
-
 awful.util.tasklist_buttons = mytable.join(
      awful.button({ }, 1, function(c)
          if c == client.focus then

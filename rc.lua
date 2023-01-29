@@ -1,16 +1,49 @@
-require("global")
+pcall(require, "luarocks.loader")
+gears         = require("gears")
+awful         = require("awful")
+                require("awful.autofocus")
+wibox         = require("wibox")
+beautiful     = require("beautiful")
+naughty       = require("naughty")
+lain          = require("lain")
+--local menubar       = require("menubar")
+freedesktop   = require("freedesktop")
+hotkeys_popup = require("awful.hotkeys_popup")
+                require("awful.hotkeys_popup.keys")
+mytable       = awful.util.table or gears.table -- 4.{0,1} compatibility
+
+-- {{{ Variable definitions
+modkey       = "Mod4"
+altkey       = "Mod1"
+vi_focus     = false -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
+-- Default Programs
+terminal     = "alacritty"
+awful.util.terminal = terminal
+editor       = os.getenv("EDITOR") or "nvim"
+browser      = "brave"
+-- Key tables for bindings
+globalkeys   = { }
+clientkeys   = { }
+-- handles tag names, tag button bindings, tag key bindings
 require("tags")
+-- handles task list button bindings
 require("tasklist")
+-- sets available layouts and lain layout configurations
 require("layouts")
+-- loads autostart programs, including XDG autostart applications
 require("autostart")
+-- loads beautiful theme and configs (such as gaps)
 require("beautiful_config")
+-- creates a launcher widget and context menu
 require("menu")
+-- handles configurations for connected screens, also sets a wibox for each screen
 require("screen")
+-- sets up global and client keybindings. globalkeys is set in this file, clientkeys are set in "rules.lua"
 require("bindings") -- "bindings.lua" requires "actions.lua" locally
-require("rules") -- clientkeys, clientbuttons created during "bindings.lua" are set on all windows
+-- handles window spawning rules, clientkeys, clientbuttons created during "bindings.lua" are set on all clients
+require("rules")
+-- handles client signals
 require("signals")
-root.buttons(globalbuttons)
-root.keys(globalkeys)
 -- {{{ Error Handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
