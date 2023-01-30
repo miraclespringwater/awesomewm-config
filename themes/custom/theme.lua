@@ -40,6 +40,8 @@ local faded_purple   = "#8f3f71"
 local faded_aqua     = "#427b58"
 local faded_orange   = "#af3a03"
 
+local gray           = "#928374"
+
 --}}}
 --{{{ Other colors
 local dark_gray      = "#3F3F3F"
@@ -89,8 +91,8 @@ theme.fg_focus                                  = bright_green
 theme.fg_urgent                                 = bright_red
 theme.fg_minimize                               = theme.fg_normal
 theme.border_width                              = dpi(2)
-theme.border_normal                             = dark_gray
-theme.border_focus                              = light_gray
+theme.border_normal                             = dark0_soft
+theme.border_focus                              = gray
 --theme.border_marked                             = "#CC9393" 
 theme.border_marked                             = bright_purple
 theme.menu_border_width                         = 0
@@ -118,7 +120,7 @@ theme.taglist_squares_sel                       = theme.confdir .. "/icons/squar
 theme.taglist_squares_unsel                     = theme.confdir .. "/icons/square_b.png"
 theme.tasklist_plain_task_name                  = true
 theme.tasklist_disable_icon                     = false
-theme.useless_gap                               = 5
+theme.useless_gap                               = 2
 theme.gap_single_client                         = true
 theme.master_width_factor                       = .55
 theme.layout_tile                               = theme.confdir .. "/icons/tile.png"
