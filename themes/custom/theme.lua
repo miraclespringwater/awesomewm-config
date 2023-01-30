@@ -118,7 +118,7 @@ theme.taglist_squares_sel                       = theme.confdir .. "/icons/squar
 theme.taglist_squares_unsel                     = theme.confdir .. "/icons/square_b.png"
 theme.tasklist_plain_task_name                  = true
 theme.tasklist_disable_icon                     = false
-theme.useless_gap                               = 10
+theme.useless_gap                               = 5
 theme.gap_single_client                         = true
 theme.master_width_factor                       = .55
 theme.layout_tile                               = theme.confdir .. "/icons/tile.png"
@@ -147,25 +147,26 @@ mytextclock.font = theme.font
 theme.cal = lain.widget.cal({
     attach_to = { mytextclock },
     notification_preset = {
-        font = "Terminus 10",
+        font = theme.font,
         fg   = theme.fg_normal,
         bg   = theme.bg_normal
     }
 })
 
 -- Weather
---[[ to be set before use
+-- [[ to be set before use
 local weathericon = wibox.widget.imagebox(theme.widget_weather)
 theme.weather = lain.widget.weather({
     APPID = "9d97325dfd1d36c9b0b79544e5ef98e0",
-    city_id = 1254187,
+    city_id = 4699066,
     lang = 'en',
-    notification_preset = { font = "Terminus 10", fg = theme.fg_normal },
-    weather_na_markup = markup.fontfg(theme.font, "#eca4c4", "N/A "),
+    units = 'imperial',
+    notification_preset = { font = theme.font, fg = theme.fg_normal },
+    weather_na_markup = markup.fontfg(theme.font, bright_green, "N/A "),
     settings = function()
         descr = weather_now["weather"][1]["description"]:lower()
         units = math.floor(weather_now["main"]["temp"])
-        widget:set_markup(markup.fontfg(theme.font, "#eca4c4", descr .. " @ " .. units .. "°C "))
+        widget:set_markup(markup.fontfg(theme.font, bright_green, descr .. " @ " .. units .. "°F "))
     end
 })
 --]]
@@ -252,7 +253,7 @@ local netdowninfo = wibox.widget.textbox()
 local netupicon = wibox.widget.imagebox(theme.widget_netup)
 local netupinfo = lain.widget.net({
     settings = function()
-        --[[ uncomment if using the weather widget
+        -- [[ uncomment if using the weather widget
         if iface ~= "network off" and
            string.match(theme.weather.widget.text, "N/A")
         then
@@ -302,6 +303,7 @@ theme.mpd = lain.widget.mpd({
 })
 
 function theme.at_screen_connect(s)
+   
     -- Quake application
     s.quake = lain.util.quake({ app = awful.util.terminal })
 
@@ -313,13 +315,24 @@ function theme.at_screen_connect(s)
     gears.wallpaper.maximized(wallpaper, s, true)
 
     -- Tags
-    awful.tag(awful.util.tagnames, s, awful.layout.layouts[1])
+    awful.tag(awful.util.tagnames, s, {
+      awful.layout.layouts[1],
+      awful.layout.layouts[1],
+      awful.layout.layouts[1],
+      awful.layout.layouts[1],
+      awful.layout.layouts[1],
+      awful.layout.layouts[1],
+      awful.layout.layouts[1],
+      awful.layout.layouts[1],
+      awful.layout.layouts[2],
+    })
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
     -- Create an imagebox widget which will contains an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
     s.mylayoutbox = awful.widget.layoutbox(s)
+    s.mylayoutbox = wibox.container.margin(s.mylayoutbox, 3 , 5 , 3, 3)
     s.mylayoutbox:buttons(my_table.join(
                            awful.button({}, 1, function () awful.layout.inc( 1) end),
                            awful.button({}, 2, function () awful.layout.set( awful.layout.layouts[1] ) end),
@@ -331,9 +344,25 @@ function theme.at_screen_connect(s)
 
     -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons)
+    
 
+    --[[
+    -- TODO: make wibar float by using margin'd widgets with no
+    -- background on the wibar itself. The widgets would have
+    -- the background instead. The bar is then made to appear
+    -- as if it's floating when you set a margin.
+    -- Can be rounded by using the shape property.
+    --]]
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(20), bg = theme.bg_normal, fg = theme.fg_normal })
+    s.mywibox = awful.wibar({
+      position = "top",
+      screen = s,
+      height = dpi(20),
+      bg = theme.bg_normal,
+      fg = theme.fg_normal,
+      type = "dock",
+      --shape = function(cr,width,height)gears.shape.rounded_rect(cr, width, height, 8) end
+    })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -341,6 +370,7 @@ function theme.at_screen_connect(s)
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
             --s.mylayoutbox,
+            --wibox.container.margin(s.mytaglist, 5),
             s.mytaglist,
             s.mypromptbox,
             mpdicon,
@@ -365,12 +395,12 @@ function theme.at_screen_connect(s)
             cpu.widget,
             fsicon,
             theme.fs.widget,
-            --weathericon,
-            --theme.weather.widget,
             tempicon,
             temp.widget,
             baticon,
             bat.widget,
+            weathericon,
+            theme.weather.widget,
             clockicon,
             mytextclock,
             s.mylayoutbox,

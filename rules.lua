@@ -46,7 +46,9 @@ awful.rules.rules = {
           "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
         }
       }, --properties = { floating = true, placement = awful.placement.centered  }},
-      callback = function(c) lain.util.magnify_client(c,nil,nil) end
+      --properties = { sticky = true },
+      callback = function(c) sticky = true 
+        lain.util.magnify_client(c,nil,nil) end
     },
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
