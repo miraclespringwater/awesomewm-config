@@ -154,7 +154,6 @@ theme.cal = lain.widget.cal({
 })
 
 -- Weather
--- [[ to be set before use
 local weathericon = wibox.widget.imagebox(theme.widget_weather)
 theme.weather = lain.widget.weather({
     APPID = "9d97325dfd1d36c9b0b79544e5ef98e0",
@@ -169,10 +168,9 @@ theme.weather = lain.widget.weather({
         widget:set_markup(markup.fontfg(theme.font, bright_green, descr .. " @ " .. units .. "°F "))
     end
 })
---]]
+
 
 -- / fs
--- commented because it needs Gio/Glib >= 2.54
 local fsicon = wibox.widget.imagebox(theme.widget_fs)
 theme.fs = lain.widget.fs({
     notification_preset = { font = "Terminus 10", fg = theme.fg_normal },
