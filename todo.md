@@ -8,3 +8,4 @@
   * This can be done by setting the background on the widgets themselves
   instead of the entire bar. Then using a transparent border to act as a
   makeshift margin.
+* Create comfy keybindings
