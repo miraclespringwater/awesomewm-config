@@ -41,10 +41,6 @@ for i = 1, 10 do
 		desc = "#" .. i - 1
 	end
 	--]]
-	naughty.notify({
-		preset = naughty.config.presets.critical,
-		text = i .. " " .. key .. " " .. desc,
-	})
 	globalkeys = mytable.join(
 		globalkeys,
 		-- View tag only.
