@@ -121,7 +121,7 @@ local _bindings = {
 
   { { modkey,           },     "space",     "global",     "layout",     "select_next_layout"            },
   { { modkey, "Shift"   },     "space",     "global",     "layout",     "select_prev_layout"            },
-  { { modkey, "Control" },     "space",     "client",     "client",     "toggle_floating"               },
+  { { modkey, "Control" },     "f",         "client",     "client",     "toggle_floating"               },
   { { modkey,           },     "Print",     "global",     "hotkey",     "take_screenshot"               },
 }
 --}}}
@@ -185,3 +185,4 @@ clientbuttons = mytable.join(
 --Set global button and keys
 root.buttons(globalbuttons)
 root.keys(globalkeys)
+

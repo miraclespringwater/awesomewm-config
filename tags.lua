@@ -1,4 +1,4 @@
-awful.util.tagnames = { "~", "", "", "ﲵ", "", "", "", "", "﫵", "" }
+awful.util.tagnames = { "", "", "ﲵ", "", "", "", "﫵", "", "" }
 -- ﲵ    ﱘ   
 -- home terminal browser code vm stats
 -- Let mouse control/navigate to tags
@@ -28,9 +28,9 @@ awful.util.taglist_buttons = mytable.join(
 -- Be careful: we use keycodes to make it work on any keyboard layout.
 -- This should map on the top row of your keyboard, usually 1 to 9.
 for i = 1, 10 do
-	--[[ local key = "#" .. i + 9 ]]
-	--[[ local desc = "#" .. i ]]
-	-- [[use if want to use the tilde key for a tag
+	local key = "#" .. i + 9
+	local desc = "#" .. i
+	--[[use if want to use the tilde key for a tag
 	local key
 	local desc
 	if i == 1 then
