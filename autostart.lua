@@ -7,6 +7,7 @@ end
 
 run_once({ "unclutter -root" }) -- comma-separated entries
 -- This function implements the XDG autostart specification
+awful.spawn.with_shell("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
 awful.spawn.with_shell("caffeine")
 awful.spawn.with_shell("nm-applet")
 awful.spawn.with_shell(

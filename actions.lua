@@ -24,12 +24,20 @@ return {
     client = {
       focus_next_by_index          = function() awful.client.focus.byidx(1) end, -- assigned
       focus_prev_by_index          = function() awful.client.focus.byidx(-1) end, -- assigned
+
       focus_down                   = function() awful.client.focus.global_bydirection("down") if client.focus then client.focus:raise() end end,-- assigned
-      focus_up                     = function() awful.client.focus.global_bydirection("up") if client.focus then client.focus:raise() end end, -- assigned
+      focus_up                     = function() awful.client.focus.global_bydirection("up")    if client.focus then client.focus:raise() end end, -- assigned
       focus_left                   = function() awful.client.focus.global_bydirection("left") if client.focus then client.focus:raise() end end, -- assigned
       focus_right                  = function() awful.client.focus.global_bydirection("right") if client.focus then client.focus:raise() end end, -- assigned
-      swap_next_by_index           = function() awful.client.swap.byidx(1) end, -- assigned
-      swap_prev_by_index           = function() awful.client.swap.byidx(-1) end, -- assigned
+
+      swap_next_by_index           = function() awful.client.swap.byidx(1) end,
+      swap_prev_by_index           = function() awful.client.swap.byidx(-1) end,
+
+      swap_with_down               = function() awful.client.swap.global_bydirection("down") end, -- assigned
+      swap_with_up                 = function() awful.client.swap.global_bydirection("up")    end, -- assigned
+      swap_with_left                    = function() awful.client.swap.global_bydirection("left") end, -- assigned
+      swap_with_right                   = function() awful.client.swap.global_bydirection("right") end, -- assigned
+
       jump_to_urgent               = awful.client.urgent.jumpto, -- assigned
       restore_minimized            = function()  -- assigned
                                         local c = awful.client.restore()
