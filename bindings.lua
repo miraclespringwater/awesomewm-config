@@ -1,4 +1,5 @@
 local _actions = require("actions")
+local scratch = require("scratch")
 --{{{ Bindings
 local _bindings = {
 --        1: Mods              2: Key       3: Scope      4: Group      5: Description          First row
@@ -118,8 +119,10 @@ local _bindings = {
   { { modkey,           },     ".",         "global",     "launch",     "unmaximize_horizontally"     },
   { { modkey,           },     "slash",     "global",     "hotkey",     "show_help"                     },
 
-  { { modkey,           },     "space",     "global",     "layout",     "select_next_layout"            },
-  { { modkey, "Shift"   },     "space",     "global",     "layout",     "select_prev_layout"            },
+  --{ { modkey,           },     "a",         "client",     "scratch",    "wiki"                     },
+
+--{ { modkey,           },     "space",     "global",     "layout",     "select_next_layout"            },
+--{ { modkey, "Shift"   },     "space",     "global",     "layout",     "select_prev_layout"            },
   { { modkey, "Control" },     "f",         "client",     "client",     "toggle_floating"               },
   { { modkey,           },     "Print",     "global",     "hotkey",     "take_screenshot"               },
 }
@@ -158,6 +161,7 @@ local _bindings = {
      clientkeys = mytable.join( clientkeys, awesomeKey )
    end
  end
+ globalkeys = mytable.join(globalkeys, awful.key( {modkey, }, "a", function() scratch.wiki:toggle() end, {description = "toggle wiki", group = "scratch"} ))
 --}}}
 --{{{ Set global mouse buttons
 globalbuttons = mytable.join(

@@ -1,4 +1,5 @@
-awful.util.tagnames = { "", "", "ﲵ", "", "", "", "﫵", "", "" }
+-- awful.util.tagnames = { "", "", "ﲵ", "", "", "", "﫵", "", "" }
+awful.util.tagnames = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }
 -- ﲵ    ﱘ   
 -- home terminal browser code vm stats
 -- Let mouse control/navigate to tags
