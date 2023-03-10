@@ -26,6 +26,11 @@ globalkeys = {}
 clientkeys = {}
 -- Variable for trackin toggle of bar
 bar_toggled = true
+-- Global sleep function
+function SLEEP(n)
+	os.execute("sleep " .. tonumber(n))
+end
+
 -- handles tag names, tag button bindings, tag key bindings
 require("tags")
 -- handles task list button bindings
