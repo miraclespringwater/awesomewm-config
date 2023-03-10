@@ -163,6 +163,7 @@ local _bindings = {
  end
  globalkeys = mytable.join(globalkeys, awful.key( {modkey, }, "w", function() scratch.wiki:toggle() end, {description = "toggle wiki", group = "scratch"} ))
  globalkeys = mytable.join(globalkeys, awful.key( {modkey, }, "c", function() scratch.cmus:toggle() end, {description = "toggle cmus", group = "scratch"} ))
+ globalkeys = mytable.join(globalkeys, awful.key( {modkey, }, "p", function() scratch.keepass:toggle() end, {description = "toggle keepassxc", group = "scratch"} ))
 --}}}
 --{{{ Set global mouse buttons
 globalbuttons = mytable.join(

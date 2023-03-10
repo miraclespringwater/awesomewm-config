@@ -10,7 +10,7 @@ scratch.wiki = bling.module.scratchpad({
 	sticky = true,
 	autoclose = false,
 	floating = true,
-	geometry = { x = 900, y = 100, height = 800, width = 975 },
+	geometry = { x = 850, y = 100, height = 800, width = 975 },
 	reapply = true,
 	dont_focus_before_close = true,
 })
@@ -22,6 +22,17 @@ scratch.cmus = bling.module.scratchpad({
 	autoclose = true,
 	floating = true,
 	geometry = { x = 100, y = 100, height = 600, width = 1200 },
+	reapply = true,
+	dont_focus_before_close = true,
+})
+
+scratch.keepass = bling.module.scratchpad({
+	command = "keepassxc",
+	rule = { instance = "keepassxc" },
+	sticky = false,
+	autoclose = true,
+	floating = true,
+	geometry = { x = 900, y = 50, height = 800, width = 1000 },
 	reapply = true,
 	dont_focus_before_close = true,
 })
