@@ -69,7 +69,7 @@ local _bindings = {
   { { modkey,           },     "Tab",       "global",     "tags",       "go_back"                       },
 --{ { modkey,           },     "q",         "global",     "launch",     ""                              },
   { { modkey, "Shift"   },     "q",         "client",     "client",     "close"                         },
-  { { modkey,           },     "w",         "global",     "client",     "go_back"                       },
+--{ { modkey,           },     "w",         "global",     "client",     "go_back"                       },
 --{ { modkey,           },     "e",         "global",     "launch",     ""                              }, -- vim in goyo mode
   { { modkey,           },     "r",         "global",     "hotkey",     "run_prompt"                    }, -- may switch to rofi or dmenu
   { { modkey, "Shift"   },     "r",         "global",     "awesome",    "reload"                }, -- may switch to rofi or dmenu
@@ -161,7 +161,8 @@ local _bindings = {
      clientkeys = mytable.join( clientkeys, awesomeKey )
    end
  end
- globalkeys = mytable.join(globalkeys, awful.key( {modkey, }, "a", function() scratch.wiki:toggle() end, {description = "toggle wiki", group = "scratch"} ))
+ globalkeys = mytable.join(globalkeys, awful.key( {modkey, }, "w", function() scratch.wiki:toggle() end, {description = "toggle wiki", group = "scratch"} ))
+ globalkeys = mytable.join(globalkeys, awful.key( {modkey, }, "c", function() scratch.cmus:toggle() end, {description = "toggle cmus", group = "scratch"} ))
 --}}}
 --{{{ Set global mouse buttons
 globalbuttons = mytable.join(
