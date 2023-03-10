@@ -10,7 +10,14 @@ return {
       take_screenshot              = function() os.execute("screenshot") end, -- assigned
       lock_screen                  = function() os.execute(scrlocker) end, -- assigned
       show_help                    = hotkeys_popup.show_help, -- assigned
-      run_prompt                   = function() awful.screen.focused().mypromptbox:run() end, -- assigned
+      run_prompt                   = function() 
+                                      local s = awful.screen.focused()
+                                      local barWasToggled = s.mywibox.visible
+                                      if not barWasToggled then
+                                        s.mywibox.visible = not s.mywibox.visible
+                                      end
+                                      s.mypromptbox:run()
+                                     end, -- assigned
       lua_execute_prompt           = function ()
                                            awful.prompt.run {
                                              prompt       = "Run Lua code: ",
@@ -90,6 +97,7 @@ return {
 
     wibox = {
       toggle_bar                   = function() 
+                                          bar_toggled = not bar_toggled
                                           for s in screen do
                                               s.mywibox.visible = not s.mywibox.visible
                                               if s.mybottomwibox then

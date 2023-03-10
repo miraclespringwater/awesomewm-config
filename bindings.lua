@@ -121,8 +121,8 @@ local _bindings = {
 
   --{ { modkey,           },     "a",         "client",     "scratch",    "wiki"                     },
 
---{ { modkey,           },     "space",     "global",     "layout",     "select_next_layout"            },
---{ { modkey, "Shift"   },     "space",     "global",     "layout",     "select_prev_layout"            },
+  { { modkey,           },     "space",     "global",     "layout",     "select_next_layout"            },
+  { { modkey, "Shift"   },     "space",     "global",     "layout",     "select_prev_layout"            },
   { { modkey, "Control" },     "f",         "client",     "client",     "toggle_floating"               },
   { { modkey,           },     "Print",     "global",     "hotkey",     "take_screenshot"               },
 }
