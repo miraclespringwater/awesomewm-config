@@ -59,6 +59,14 @@ local _bindings = {
 --{ { modkey,           },     "space",     "global",     "launch",     "terminal"                      },
 
 --        1: Mods              2: Key       3: Scope      4: Group      5: Description                    First row
+  { {       },          "XF86AudioMute",    "global",     "hotkey",     "volume_mute"                   },
+  { {       },   "XF86AudioLowerVolume",    "global",     "hotkey",     "volume_down"                   },
+  { {"Shift"},   "XF86AudioLowerVolume",    "global",     "hotkey",     "volume_min"                    },
+  { {       },   "XF86AudioRaiseVolume",    "global",     "hotkey",     "volume_up"                     },
+  { {"Shift"},   "XF86AudioRaiseVolume",    "global",     "hotkey",     "volume_max"                    },
+  { {       },    "XF86MonBrightnessUp",    "global",     "hotkey",     "brightness_up"                 },
+  { {       },  "XF86MonBrightnessDown",    "global",     "hotkey",     "brightness_down"               },
+  { {"Shift"},    "XF86MonBrightnessUp",    "global",     "hotkey",     "brightness_max"                },
   { { modkey,           },     "Escape",    "global",     "hotkey",     "lock_screen"                   },
 --{ { modkey,           },     "`",         "global",     "launch",     ""                              },
   { { modkey,           },     "0",         "global",     "menu",       "show"                          },
@@ -72,28 +80,29 @@ local _bindings = {
 --{ { modkey,           },     "w",         "global",     "client",     "go_back"                       },
 --{ { modkey,           },     "e",         "global",     "launch",     ""                              }, -- vim in goyo mode
   { { modkey,           },     "r",         "global",     "hotkey",     "run_prompt"                    }, -- may switch to rofi or dmenu
-  { { modkey, "Shift"   },     "r",         "global",     "awesome",    "reload"                }, -- may switch to rofi or dmenu
-  { { modkey, "Control" },     "r",         "global",     "tags",       "rename"                    }, -- may switch to rofi or dmenu
+--{ { modkey,           },     "r",         "global",     "rofi",       "run"                           }, 
+  { { modkey, "Shift"   },     "r",         "global",     "awesome",    "reload"                        },
+  { { modkey, "Control" },     "r",         "global",     "tags",       "rename"                        },
   { { modkey,           },     "t",         "client",     "client",     "toggle_keep_on_top"            },
 --{ { modkey,           },     "y",         "global",     "launch",     ""                              },
   { { modkey,           },     "u",         "global",     "client",     "jump_to_urgent"                },
 --{ { modkey,           },     "i",         "global",     "launch",     ""                              },
---{ { modkey,           },     "o",         "global",     "launch",     ""                              },
+  { { modkey,           },     "o",         "global",     "launch",     "browser"                       },
 --{ { modkey,           },     "p",         "global",     "launch",     ""                              },
   { { modkey,           },     "[",         "global",     "client",     "focus_prev_by_index"           },
   { { modkey,           },     "]",         "global",     "client",     "focus_next_by_index"           },
   { { modkey,           },     "backslash", "client",     "client",     "magnify"                       },
 --{ { modkey,           },     "a",         "global",     "tags",       ""                              },
-  { { modkey, "Control" },     "a",         "global",     "tags",       "add_new"                   },
+  { { modkey, "Control" },     "a",         "global",     "tags",       "add_new"                       },
 --{ { modkey,           },     "s",         "global",     "awesome",    ""                              },
---{ { modkey,           },     "d",         "global",     "launch",     ""                              }, -- menu for launching design programs
-  { { modkey, "Control" },     "d",         "global",     "tags",       "delete"                    },
+  { { modkey,           },     "d",         "global",     "rofi",       "pdf"                           }, -- menu for launching design programs
+  { { modkey, "Control" },     "d",         "global",     "tags",       "delete"                        },
   { { modkey,           },     "f",         "client",     "client",     "toggle_fullscreen"             },
 --{ { modkey,           },     "g",         "global",     "launch",     ""                              },
-  { { modkey, "Shift"   },     "h",         "global",     "client",     "swap_with_left"                    },
-  { { modkey, "Shift"   },     "j",         "global",     "client",     "swap_with_down"            },
-  { { modkey, "Shift"   },     "k",         "global",     "client",     "swap_with_up"            },
-  { { modkey, "Shift"   },     "l",         "global",     "client",     "swap_with_right"                    },
+  { { modkey, "Shift"   },     "h",         "global",     "client",     "swap_with_left"                },
+  { { modkey, "Shift"   },     "j",         "global",     "client",     "swap_with_down"                },
+  { { modkey, "Shift"   },     "k",         "global",     "client",     "swap_with_up"                  },
+  { { modkey, "Shift"   },     "l",         "global",     "client",     "swap_with_right"               },
 --{ { modkey, "Control" },     "h",         "global",     "tags",       "move_to_the_left"          },
   { { modkey,           },     "h",         "global",     "client",     "focus_left"                    },
   { { modkey,           },     "j",         "global",     "client",     "focus_down"                    },
@@ -110,16 +119,16 @@ local _bindings = {
 --{ { modkey,           },     "x",         "global",     "launch",     ""                              },
   { { modkey, "Control" },     "x",         "global",     "awesome",    "quit"                          },
 --{ { modkey,           },     "c",         "global",     "launch",     ""                              },
---{ { modkey,           },     "v",         "global",     "launch",     ""                              }, -- last nvim session
+  { { modkey,           },     "v",         "global",     "launch",     "nvim"                          }, -- last nvim session
   { { modkey,           },     "b",         "global",     "wibox",      "toggle_bar"                    },
   { { modkey,           },     "n",         "global",     "client",     "restore_minimized"             },
-  { { modkey,           },     "m",         "client",     "client",     "unmaximize"                  },
+  { { modkey,           },     "m",         "client",     "client",     "unmaximize"                    },
   { { modkey, "Shift"   },     "m",         "client",     "client",     "minimize"                      },
-  { { modkey,           },     ",",         "client",     "client",     "unmaximize_vertically"       },
-  { { modkey,           },     ".",         "global",     "launch",     "unmaximize_horizontally"     },
+  { { modkey,           },     ",",         "client",     "client",     "unmaximize_vertically"         },
+  { { modkey,           },     ".",         "global",     "launch",     "unmaximize_horizontally"       },
   { { modkey,           },     "slash",     "global",     "hotkey",     "show_help"                     },
 
-  --{ { modkey,           },     "a",         "client",     "scratch",    "wiki"                     },
+--{ { modkey,           },     "a",         "client",     "scratch",    "wiki"                          },
 
   { { modkey,           },     "space",     "global",     "layout",     "select_next_layout"            },
   { { modkey, "Shift"   },     "space",     "global",     "layout",     "select_prev_layout"            },
@@ -164,6 +173,7 @@ local _bindings = {
  globalkeys = mytable.join(globalkeys, awful.key( {modkey, }, "w", function() scratch.wiki:toggle() end, {description = "toggle wiki", group = "scratch"} ))
  globalkeys = mytable.join(globalkeys, awful.key( {modkey, }, "c", function() scratch.cmus:toggle() end, {description = "toggle cmus", group = "scratch"} ))
  globalkeys = mytable.join(globalkeys, awful.key( {modkey, }, "p", function() scratch.keepass:toggle() end, {description = "toggle keepassxc", group = "scratch"} ))
+ globalkeys = mytable.join(globalkeys, awful.key( {modkey, }, "`", function() scratch.term:toggle() end, {description = "toggle scratch terminal", group = "scratch"} ))
 --}}}
 --{{{ Set global mouse buttons
 globalbuttons = mytable.join(

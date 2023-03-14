@@ -5,7 +5,7 @@ local bling = require("bling")
 local scratch = {}
 
 scratch.wiki = bling.module.scratchpad({
-	command = "alacritty --title wiki-spad --class wiki-spad -e nvim +VimwikiIndex",
+	command = "alacritty --title wiki-spad --class wiki-spad -e bash -c 'cd ~/vimwiki && nvim +VimwikiIndex'",
 	rule = { instance = "wiki-spad" },
 	sticky = true,
 	autoclose = false,
@@ -34,6 +34,17 @@ scratch.keepass = bling.module.scratchpad({
 	floating = true,
 	geometry = { x = 900, y = 50, height = 800, width = 1000 },
 	reapply = true,
+	dont_focus_before_close = true,
+})
+
+scratch.term = bling.module.scratchpad({
+	command = "alacritty --class term-spad",
+	rule = { instance = "term-spad" },
+	sticky = true,
+	autoclose = false,
+	floating = true,
+	geometry = { x = 1000, y = 70, height = 800, width = 800 },
+	reapply = false,
 	dont_focus_before_close = true,
 })
 

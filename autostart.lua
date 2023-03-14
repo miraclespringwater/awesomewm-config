@@ -7,12 +7,12 @@ end
 
 run_once({ "unclutter -root" }) -- comma-separated entries
 -- This function implements the XDG autostart specification
-awful.spawn.with_shell("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
-awful.spawn.with_shell("caffeine")
-awful.spawn.with_shell("nm-applet")
 awful.spawn.with_shell(
-	"exec picom -b --animations --animation-window-mass 0.5 --animation-for-open-window zoom --animation-stiffness 350"
+	"picom -b --animations --animation-window-mass 0.5 --animation-for-open-window zoom --animation-stiffness 350"
 )
+awful.spawn.with_shell("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
+awful.spawn.with_shell("killall caffeine ; caffeine")
+awful.spawn.with_shell("killall nm-tray ; nm-tray")
 awful.spawn.with_shell(
 	'if (xrdb -query | grep -q "^awesome\\.started:\\s*true$"); then exit; fi;'
 		.. 'xrdb -merge <<< "awesome.started:true";'
@@ -22,7 +22,7 @@ awful.spawn.with_shell(
 --[[
   ProtonMail-Bridge does not have
   an option to start in the tray.
-  This command automatically close
+  This command automatically closes
   the window after it is launched.
 --]]
 --[[ awful.spawn.with_shell('protonmail-bridge & disown && \ ]]
