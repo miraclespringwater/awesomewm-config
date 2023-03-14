@@ -174,6 +174,7 @@ local _bindings = {
  globalkeys = mytable.join(globalkeys, awful.key( {modkey, }, "c", function() scratch.cmus:toggle() end, {description = "toggle cmus", group = "scratch"} ))
  globalkeys = mytable.join(globalkeys, awful.key( {modkey, }, "p", function() scratch.keepass:toggle() end, {description = "toggle keepassxc", group = "scratch"} ))
  globalkeys = mytable.join(globalkeys, awful.key( {modkey, }, "`", function() scratch.term:toggle() end, {description = "toggle scratch terminal", group = "scratch"} ))
+ globalkeys = mytable.join(globalkeys, awful.key( {modkey, }, "a", function() scratch.mixer:toggle() end, {description = "toggle mixer", group = "scratch"} ))
 --}}}
 --{{{ Set global mouse buttons
 globalbuttons = mytable.join(

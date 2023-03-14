@@ -48,6 +48,17 @@ scratch.term = bling.module.scratchpad({
 	dont_focus_before_close = true,
 })
 
+scratch.mixer = bling.module.scratchpad({
+	command = "alacritty --class mixer-spad -e pulsemixer",
+	rule = { instance = "mixer-spad" },
+	sticky = true,
+	autoclose = true,
+	floating = true,
+	geometry = { x = 200, y = 200, height = 600, width = 1000 },
+	reapply = true,
+	dont_focus_before_close = true,
+})
+
 scratch.cmus:connect_signal("turn_on", function(c)
 	c.ontop = true
 end)
