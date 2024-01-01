@@ -11,8 +11,9 @@ awful.spawn.with_shell(
 	"picom -b --animations --animation-window-mass 0.5 --animation-for-open-window zoom --animation-stiffness 350"
 )
 awful.spawn.with_shell("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
-awful.spawn.with_shell("killall caffeine ; caffeine")
-awful.spawn.with_shell("killall nm-tray ; nm-tray")
+awful.spawn.with_shell("killall caffeine-indicator ; caffeine-indicator")
+awful.spawn.with_shell("killall nm-applet -w; nm-applet")
+awful.spawn.with_shell("/home/dream/.local/bin/start-xidlehooks")
 awful.spawn.with_shell(
 	'if (xrdb -query | grep -q "^awesome\\.started:\\s*true$"); then exit; fi;'
 		.. 'xrdb -merge <<< "awesome.started:true";'

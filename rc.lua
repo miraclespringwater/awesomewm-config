@@ -21,6 +21,7 @@ terminal = "alacritty"
 awful.util.terminal = terminal
 editor = os.getenv("EDITOR") or "nvim"
 browser = "brave"
+scrlocker = "my-screen-locker"
 -- Key tables for bindings
 globalkeys = {}
 clientkeys = {}

@@ -103,6 +103,7 @@ local _bindings = {
   { { modkey, "Shift"   },     "j",         "global",     "client",     "swap_with_down"                },
   { { modkey, "Shift"   },     "k",         "global",     "client",     "swap_with_up"                  },
   { { modkey, "Shift"   },     "l",         "global",     "client",     "swap_with_right"               },
+  { { modkey,altkey,"Control"},"l",         "global",     "hotkey",     "lock_screen"                   },
 --{ { modkey, "Control" },     "h",         "global",     "tags",       "move_to_the_left"          },
   { { modkey,           },     "h",         "global",     "client",     "focus_left"                    },
   { { modkey,           },     "j",         "global",     "client",     "focus_down"                    },
@@ -122,8 +123,8 @@ local _bindings = {
   { { modkey,           },     "v",         "global",     "launch",     "nvim"                          }, -- last nvim session
   { { modkey,           },     "b",         "global",     "wibox",      "toggle_bar"                    },
   { { modkey,           },     "n",         "global",     "client",     "restore_minimized"             },
-  { { modkey,           },     "m",         "client",     "client",     "unmaximize"                    },
-  { { modkey, "Shift"   },     "m",         "client",     "client",     "minimize"                      },
+  { { modkey, "Shift"   },     "m",         "client",     "client",     "unmaximize"                    },
+  { { modkey, "Control" },     "m",         "client",     "client",     "minimize"                      },
   { { modkey,           },     ",",         "client",     "client",     "unmaximize_vertically"         },
   { { modkey,           },     ".",         "global",     "launch",     "unmaximize_horizontally"       },
   { { modkey,           },     "slash",     "global",     "hotkey",     "show_help"                     },
@@ -175,6 +176,7 @@ local _bindings = {
  globalkeys = mytable.join(globalkeys, awful.key( {modkey, }, "p", function() scratch.keepass:toggle() end, {description = "toggle keepassxc", group = "scratch"} ))
  globalkeys = mytable.join(globalkeys, awful.key( {modkey, }, "`", function() scratch.term:toggle() end, {description = "toggle scratch terminal", group = "scratch"} ))
  globalkeys = mytable.join(globalkeys, awful.key( {modkey, }, "a", function() scratch.mixer:toggle() end, {description = "toggle mixer", group = "scratch"} ))
+ globalkeys = mytable.join(globalkeys, awful.key( {modkey, }, "m", function() scratch.mail:toggle() end, {description = "toggle neomutt", group = "scratch"} ))
 --}}}
 --{{{ Set global mouse buttons
 globalbuttons = mytable.join(

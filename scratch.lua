@@ -59,6 +59,16 @@ scratch.mixer = bling.module.scratchpad({
 	dont_focus_before_close = true,
 })
 
+scratch.mail = bling.module.scratchpad({
+	command = "alacritty --class mail-spad -e neomutt",
+	rule = { instance = "mail-spad" },
+	sticky = false,
+	autoclose = false,
+	floating = true,
+	geometry = { x = 50, y = 100, height = 800, width = 1600 },
+	reapply = false,
+	dont_focus_before_close = true,
+})
 scratch.cmus:connect_signal("turn_on", function(c)
 	c.ontop = true
 end)
