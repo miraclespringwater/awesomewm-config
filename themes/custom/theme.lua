@@ -81,7 +81,7 @@ theme.confdir = os.getenv("HOME") .. "/.config/awesome/themes/custom"
 -- theme.wallpaper = os.getenv("HOME") .. "/pix/wallpapers/darksouls-shrine.jpg"
 -- theme.wallpaper = os.getenv("HOME") .. "/pix/wallpapers/darksouls-solaire.jpg"
 --theme.font                                      = "Terminus 8"
-theme.font = "JetBrainsMono Nerd Font Mono 8"
+theme.font = "JetBrainsMono Nerd Font Mono 9"
 --theme.bg_normal                                 = "#1d2021"
 theme.bg_normal = dark0_hard
 --theme.bg_focus                                  = "#313131"
@@ -309,11 +309,11 @@ function theme.at_screen_connect(s)
   s.quake = lain.util.quake({ app = awful.util.terminal })
 
   -- If wallpaper is a function, call it with the screen
-  local wallpaper = theme.wallpaper
-  if type(wallpaper) == "function" then
-    wallpaper = wallpaper(s)
-  end
-  gears.wallpaper.maximized(wallpaper, s, true)
+  -- local wallpaper = theme.wallpaper
+  -- if type(wallpaper) == "function" then
+  --   wallpaper = wallpaper(s)
+  -- end
+  -- gears.wallpaper.maximized(wallpaper, s, true)
 
   -- Tags
   awful.tag(awful.util.tagnames, s, {
@@ -374,12 +374,17 @@ function theme.at_screen_connect(s)
   s.mywibox = awful.wibar({
     position = "top",
     screen = s,
+    -- width = dpi(1800),
+    width = s.geometry.width - 18,
     height = dpi(24),
-    bg = theme.bg_normal,
-    fg = theme.fg_normal,
-    type = "dock",
-    ontop = true,
-    --shape = function(cr,width,height)gears.shape.rounded_rect(cr, width, height, 8) end
+    margins = 0,
+    border_width = 5,
+    border_color = "#00000000",
+    -- x = 0,
+    -- y = -2000,
+    shape = function(cr, w, h)
+      gears.shape.rounded_rect(cr, w, h, 20)
+    end
   })
 
   -- Add widgets to the wibox
@@ -388,15 +393,15 @@ function theme.at_screen_connect(s)
     { -- Left widgets
       layout = wibox.layout.fixed.horizontal,
       --s.mylayoutbox,
-      --wibox.container.margin(s.mytaglist, 5),
-      s.mytaglist,
+      wibox.container.margin(s.mytaglist, 12),
+      -- s.mytaglist,
       s.mypromptbox,
       mpdicon,
       theme.mpd.widget,
     },
     s.mytasklist, -- Middle widget
     -- nil,
-    {           -- Right widgets
+    {             -- Right widgets
       layout = wibox.layout.fixed.horizontal,
       wibox.widget.systray(),
       --mailicon,
@@ -422,6 +427,7 @@ function theme.at_screen_connect(s)
       clockicon,
       mytextclock,
       s.mylayoutbox,
+      wibox.container.margin(nil, 10),
     },
   })
 end

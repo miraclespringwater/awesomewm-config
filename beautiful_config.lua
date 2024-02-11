@@ -13,7 +13,7 @@
 --local chosen_theme = themes[5]
 --beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme))
 beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), "custom"))
---beautiful.useless_gap = 12
+beautiful.useless_gap = 5
 --beautiful.useless_gap = 14
---beautiful.gap_single_client = true
+beautiful.gap_single_client = true
 --beautiful.master_width_factor = .55

@@ -7,8 +7,7 @@ end
 
 run_once({ "unclutter -root" }) -- comma-separated entries
 -- This function implements the XDG autostart specification
-awful.spawn.with_shell("nitrogen --restore")
-awful.spawn.with_shell("/usr/local/bin/picom --experimental-backend --config ~/.config/picom/picom.conf")
+awful.spawn.with_shell("picom --experimental-backend --config ~/.config/picom/picom.conf")
 -- awful.spawn.with_shell("/usr/bin/picom --config ~/.config/picom/picom.conf")
 awful.spawn.with_shell("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
 awful.spawn.with_shell("killall caffeine-indicator -w; caffeine-indicator")
@@ -37,3 +36,4 @@ do\
   ((counter ++))\
 done\
 wmctrl -i -c $(wmctrl -l | grep Proton | cut -d " " -f1)')
+awful.spawn.with_shell("nitrogen --restore")
