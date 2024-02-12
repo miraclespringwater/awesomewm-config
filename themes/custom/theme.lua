@@ -1,3 +1,5 @@
+-- local bling = require("bling")
+-- local naughty = require("naughty")
 --[[
 
      Modified from the "Multicolor Awesome WM theme 2.0" by github.com/lcpz
@@ -144,8 +146,119 @@ theme.layout_floating = theme.confdir .. "/icons/floating.png"
 
 local markup = lain.util.markup
 
--- Textclock
+
 os.setlocale(os.getenv("LANG")) -- to localize the clock
+
+-- bible widget
+
+-- function to get a random bible verse with "diatheke" command
+local function get_random_bible_verse(callback)
+  math.randomseed(os.time())
+  local random_number = math.random(35817)
+  local bible_cmd = string.format("diatheke -b DRC -k %d", random_number)
+  awful.spawn.easy_async(bible_cmd, function(stdout, stderr, exitreason, exitcode)
+    -- Check if the command was successful
+    if exitcode == 0 then
+      -- Call the callback function with the output
+      callback(stdout:gsub("<[^>]+>", ""):gsub("[\n(DRC)]", "")) -- clean out unecessary html/xml tags
+    else
+      -- Call the callback function with an error message
+      callback("Error: " .. stderr)
+    end
+  end)
+end
+
+local bible_widget = wibox.widget {
+  {
+    {
+      id = "label",
+      text = "Loading...",
+      widget = wibox.widget.textbox
+    },
+    margins = 4,
+    widget = wibox.container.margin
+  },
+  bg = '#00000000',
+  fg = theme.faded_green,
+  font = theme.font,
+  widget = wibox.container.background
+}
+
+local bible_verse_text = ""
+
+local function update_verse()
+  get_random_bible_verse(function(verse)
+    -- Update the widget's label with the verse
+    bible_widget:get_children_by_id("label")[1].markup = markup.fontfg(theme.font, bright_purple,
+      "󰳵 " .. verse:match("^(.-): "))
+    bible_verse_text = verse
+  end)
+end
+update_verse()
+
+-- 3600 seconds = 1 hour
+local interval = 3600
+-- set timer
+local update_timer = timer({ timeout = interval })
+update_timer:connect_signal("timeout", update_verse)
+update_timer:start()
+
+-- create bible notification
+local bible = {}
+local bible_notification_preset = {}
+bible_notification_preset.screen = require("awful.screen").focused()
+
+function bible.show(seconds)
+  bible.hide()
+
+  bible.notification = naughty.notify {
+    preset = notification_preset,
+    -- text = bible_widget:get_children_by_id("label")[1].text,
+    width = 300,
+    text = bible_verse_text,
+    timeout = type(seconds) == "number" and seconds or notification_preset.timeout,
+    ontop = true
+  }
+end
+
+function bible.hide()
+  if bible.notification then
+    naughty.destroy(bible.notification)
+    bible.notification = nil
+  end
+end
+
+-- listen for mouse on the bible_widget then show the bible notification
+bible_widget:connect_signal("mouse::enter", function()
+  bible.show(0)
+end)
+
+bible_widget:connect_signal("mouse::leave", function()
+  bible.hide()
+end)
+
+
+
+-- local bible_tooltip = awful.tooltip {
+--   objects = { bible_widget },
+--   bg = theme.bg_normal,
+--   fg = theme.fg_normal,
+--   timer_function = function()
+--     return bible_widget:get_children_by_id("label")[1].text
+--   end,
+--   preferred_positions = { "right", "left", "top", "bottom" },
+--   font = theme.font,
+--   margin_leftright = 8,
+--   margin_topbottom = 8,
+--   wrap = true,
+--   width = 200, -- Use max_width instead of width
+--   shape = function(cr, w, h)
+--     gears.shape.rounded_rect(cr, w, h, 10)
+--   end
+-- }
+
+
+-- Textclock
 local clockicon = wibox.widget.imagebox(theme.widget_clock)
 local mytextclock = wibox.widget.textclock(
   markup(neutral_green, "%A %d %B ") .. markup(neutral_green, ">") .. markup(neutral_green, " %H:%M ")
@@ -424,6 +537,7 @@ function theme.at_screen_connect(s)
       bat.widget,
       weathericon,
       theme.weather.widget,
+      bible_widget,
       clockicon,
       mytextclock,
       s.mylayoutbox,
