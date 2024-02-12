@@ -160,7 +160,8 @@ local function get_random_bible_verse(callback)
     -- Check if the command was successful
     if exitcode == 0 then
       -- Call the callback function with the output
-      callback(stdout:gsub("<[^>]+>", ""):gsub("[\n(DRC)]", "")) -- clean out unecessary html/xml tags
+      callback(stdout:gsub("<[^>]+>$", ""):gsub("\n%(DRC%)%s*$", "")) -- clean out unecessary html/xml tags
+      -- callback(stdout) -- clean out unecessary html/xml tags
     else
       -- Call the callback function with an error message
       callback("Error: " .. stderr)
@@ -185,6 +186,7 @@ local bible_widget = wibox.widget {
 }
 
 local bible_verse_text = ""
+local bible = {}
 
 local function update_verse()
   get_random_bible_verse(function(verse)
@@ -192,6 +194,12 @@ local function update_verse()
     bible_widget:get_children_by_id("label")[1].markup = markup.fontfg(theme.font, bright_purple,
       "󰳵 " .. verse:match("^(.-): "))
     bible_verse_text = verse
+
+    if (bible.notification) then
+      bible.notification.text = bible_verse_text
+      bible.hide()
+      bible.show(0)
+    end
   end)
 end
 update_verse()
@@ -204,7 +212,6 @@ update_timer:connect_signal("timeout", update_verse)
 update_timer:start()
 
 -- create bible notification
-local bible = {}
 local bible_notification_preset = {}
 bible_notification_preset.screen = require("awful.screen").focused()
 
@@ -235,6 +242,18 @@ end)
 
 bible_widget:connect_signal("mouse::leave", function()
   bible.hide()
+end)
+
+bible_widget:connect_signal("button::press", function(_, _, _, button)
+  if button == 1 then
+    local command = string.format('echo "%s" | xsel -ib', bible_verse_text:gsub("\n", ""))
+    os.execute(command)
+    -- some code
+  end
+
+  if button == 3 then
+    update_verse()
+  end
 end)
 
 
