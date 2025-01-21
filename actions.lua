@@ -1,8 +1,30 @@
+local scratch = require("scratch")
 return {
 	global = {
 		awesome = {
 			reload = awesome.restart, -- assigned
 			quit = awesome.quit, -- assigned
+		},
+
+		scratch = {
+			wiki = function()
+				scratch.wiki:toggle()
+			end,
+			cmus = function()
+				scratch.cmus:toggle()
+			end,
+			keepass = function()
+				scratch.keepass:toggle()
+			end,
+			term = function()
+				scratch.term:toggle()
+			end,
+			mixer = function()
+				scratch.mixer:toggle()
+			end,
+			mail = function()
+				scratch.mail:toggle()
+			end,
 		},
 
 		hotkey = {
@@ -130,16 +152,6 @@ return {
 					client.focus:raise()
 				end
 			end,
-			--"cycle clients"                = function()
-			--                                   if cycle_prev then
-			--                                       awful.client.focus.history.previous()
-			--                                   else
-			--                                       awful.client.focus.byidx(-1)
-			--                                   end
-			--                                   if client.focus then
-			--                                       client.focus:raise()
-			--                                   end
-			--                                 end
 		},
 
 		layout = { -- assigned

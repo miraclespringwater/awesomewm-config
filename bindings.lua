@@ -68,7 +68,7 @@ local _bindings = {
   { {       },  "XF86MonBrightnessDown",    "global",     "hotkey",     "brightness_down"               },
   { {"Shift"},    "XF86MonBrightnessUp",    "global",     "hotkey",     "brightness_max"                },
   { { modkey,           },     "Escape",    "global",     "hotkey",     "lock_screen"                   },
---{ { modkey,           },     "`",         "global",     "launch",     ""                              },
+  { { modkey,           },     "`",         "global",     "scratch",    "term"                              },
   { { modkey,           },     "0",         "global",     "menu",       "show"                          },
   { { modkey,           },     "-",         "global",     "gaps",       "decrease"                      },
   { { modkey,           },     "=",         "global",     "gaps",       "increase"                      },
@@ -77,10 +77,9 @@ local _bindings = {
   { { modkey,           },     "Tab",       "global",     "tags",       "go_back"                       },
 --{ { modkey,           },     "q",         "global",     "launch",     ""                              },
   { { modkey, "Shift"   },     "q",         "client",     "client",     "close"                         },
---{ { modkey,           },     "w",         "global",     "client",     "go_back"                       },
+  { { modkey,           },     "w",         "global",     "scratch",    "wiki"                          },
 --{ { modkey,           },     "e",         "global",     "launch",     ""                              }, -- vim in goyo mode
   { { modkey,           },     "r",         "global",     "hotkey",     "run_prompt"                    }, -- may switch to rofi or dmenu
---{ { modkey,           },     "r",         "global",     "rofi",       "run"                           }, 
   { { modkey, "Shift"   },     "r",         "global",     "awesome",    "reload"                        },
   { { modkey, "Control" },     "r",         "global",     "tags",       "rename"                        },
   { { modkey,           },     "t",         "client",     "client",     "toggle_keep_on_top"            },
@@ -88,11 +87,11 @@ local _bindings = {
   { { modkey,           },     "u",         "global",     "client",     "jump_to_urgent"                },
 --{ { modkey,           },     "i",         "global",     "launch",     ""                              },
   { { modkey,           },     "o",         "global",     "launch",     "browser"                       },
---{ { modkey,           },     "p",         "global",     "launch",     ""                              },
+  { { modkey,           },     "p",         "global",     "scratch",    "keepass"                              },
   { { modkey,           },     "[",         "global",     "client",     "focus_prev_by_index"           },
   { { modkey,           },     "]",         "global",     "client",     "focus_next_by_index"           },
   { { modkey,           },     "backslash", "client",     "client",     "magnify"                       },
---{ { modkey,           },     "a",         "global",     "tags",       ""                              },
+  { { modkey,           },     "a",         "global",     "scratch",    "mixer"                              },
   { { modkey, "Control" },     "a",         "global",     "tags",       "add_new"                       },
 --{ { modkey,           },     "s",         "global",     "awesome",    ""                              },
   { { modkey,           },     "d",         "global",     "rofi",       "pdf"                           }, -- menu for launching design programs
@@ -119,10 +118,11 @@ local _bindings = {
 --{ { modkey,           },     "z",         "global",     "launch",     ""                              },
 --{ { modkey,           },     "x",         "global",     "launch",     ""                              },
   { { modkey, "Control" },     "x",         "global",     "awesome",    "quit"                          },
---{ { modkey,           },     "c",         "global",     "launch",     ""                              },
+  { { modkey,           },     "c",         "global",     "scratch",    "cmus"                          },
   { { modkey,           },     "v",         "global",     "launch",     "nvim"                          }, -- last nvim session
   { { modkey,           },     "b",         "global",     "wibox",      "toggle_bar"                    },
   { { modkey,           },     "n",         "global",     "client",     "restore_minimized"             },
+  { { modkey,           },     "m",         "global",     "scratch",    "mail"                          },
   { { modkey, "Shift"   },     "m",         "client",     "client",     "unmaximize"                    },
   { { modkey, "Control" },     "m",         "client",     "client",     "minimize"                      },
   { { modkey,           },     ",",         "client",     "client",     "unmaximize_vertically"         },
@@ -171,14 +171,14 @@ local _bindings = {
      clientkeys = mytable.join( clientkeys, awesomeKey )
    end
  end
- globalkeys = mytable.join(globalkeys, awful.key( {modkey, }, "w", function() scratch.wiki:toggle() end, {description = "toggle wiki", group = "scratch"} ))
- globalkeys = mytable.join(globalkeys, awful.key( {modkey, }, "c", function() scratch.cmus:toggle() end, {description = "toggle cmus", group = "scratch"} ))
- globalkeys = mytable.join(globalkeys, awful.key( {modkey, }, "p", function() scratch.keepass:toggle() end, {description = "toggle keepassxc", group = "scratch"} ))
- globalkeys = mytable.join(globalkeys, awful.key( {modkey, }, "`", function() scratch.term:toggle() end, {description = "toggle scratch terminal", group = "scratch"} ))
- globalkeys = mytable.join(globalkeys, awful.key( {modkey, }, "a", function() scratch.mixer:toggle() end, {description = "toggle mixer", group = "scratch"} ))
- globalkeys = mytable.join(globalkeys, awful.key( {modkey, }, "m", function() scratch.mail:toggle() end, {description = "toggle neomutt", group = "scratch"} ))
+ -- globalkeys = mytable.join(globalkeys, awful.key( {modkey, }, "w", function() scratch.wiki:toggle() end, {description = "toggle wiki", group = "scratch"} ))
+ -- globalkeys = mytable.join(globalkeys, awful.key( {modkey, }, "c", function() scratch.cmus:toggle() end, {description = "toggle cmus", group = "scratch"} ))
+ -- globalkeys = mytable.join(globalkeys, awful.key( {modkey, }, "p", function() scratch.keepass:toggle() end, {description = "toggle keepassxc", group = "scratch"} ))
+ -- globalkeys = mytable.join(globalkeys, awful.key( {modkey, }, "`", function() scratch.term:toggle() end, {description = "toggle scratch terminal", group = "scratch"} ))
+ -- globalkeys = mytable.join(globalkeys, awful.key( {modkey, }, "a", function() scratch.mixer:toggle() end, {description = "toggle mixer", group = "scratch"} ))
+ -- globalkeys = mytable.join(globalkeys, awful.key( {modkey, }, "m", function() scratch.mail:toggle() end, {description = "toggle neomutt", group = "scratch"} ))
 --}}}
---{{{ Set global mouse buttons
+--{{{ Set global mouse buttonsminimizeminimize
 globalbuttons = mytable.join(
     awful.button({ }, 3, function () awful.util.mymainmenu:toggle() end),
     awful.button({ }, 4, awful.tag.viewnext),
